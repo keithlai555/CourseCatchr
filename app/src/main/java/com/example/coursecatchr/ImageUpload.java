@@ -1,6 +1,7 @@
 package com.example.coursecatchr;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -12,6 +13,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,8 +21,11 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -67,7 +72,11 @@ public class ImageUpload extends AppCompatActivity implements PickiTCallbacks, V
         findViewById(R.id.checkText).setOnClickListener(this);
         findViewById(R.id.select_image).setOnClickListener(this);
         findViewById(R.id.submit).setOnClickListener(this);
+        findViewById(R.id.help).setOnClickListener(this);
         pickiT = new PickiT(this, this, this);
+
+        RelativeLayout relativeLayout = findViewById(R.id.image_upload);
+        relativeLayout.setBackgroundColor(Color.rgb(204, 255, 255));
 
     }
 
@@ -91,6 +100,27 @@ public class ImageUpload extends AppCompatActivity implements PickiTCallbacks, V
                 Intent activity2Intent = new Intent(getApplicationContext(), QueryingAPI.class);
                 activity2Intent.putExtra("Courses", courseList);
                 startActivity(activity2Intent);
+                break;
+            case R.id.help:
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+
+                final View customLayout = getLayoutInflater().inflate(R.layout.help, null);
+                builder.setView(customLayout);
+
+                customLayout.setBackgroundColor(Color.rgb(253, 214, 183));
+
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+
+                    }
+                });
+
+                android.app.AlertDialog dialog = builder.create();
+                dialog.show();
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 1300);
                 break;
         }
     }
