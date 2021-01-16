@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/image_upload"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp"
     tools:context=".ImageUpload">
 
@@ -41,25 +43,35 @@
         android:orientation="horizontal"
         android:gravity="center"
         >
-
+        <Button
+            android:id="@+id/help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:translationX="-23dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@mipmap/lightbulb"/>
         <Button
             android:id="@+id/select_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Image"
-            android:layout_marginRight="10dp"/>
+            android:translationX="-8dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@mipmap/addimage"/>
         <Button
             android:id="@+id/checkText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:translationX="-5dp"
-            android:text="Check the text" />
+            android:translationX="7dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@mipmap/analyze"
+            />
         <Button
             android:id="@+id/submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="Submit" />
+            android:translationX="22dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@mipmap/submit"/>
 
     </LinearLayout>
 
