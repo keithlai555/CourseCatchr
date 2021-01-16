@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,7 +43,6 @@ public class QueryingAPI extends AppCompatActivity {
         termNumber = userCourses.size()/10 + 1;
         termAlf = userCourses.size() % 10;
 
-
         if (termAlf < 5) {
             termAlphabet = "A";
         }else {
@@ -54,6 +56,7 @@ public class QueryingAPI extends AppCompatActivity {
         final ArrayList<String> list = new ArrayList<>();
         final ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(adapter);
+        final ArrayList<String> title = new ArrayList<>();
 
         mDatabase.child("Courses").addValueEventListener(new ValueEventListener() {
             @Override
@@ -89,16 +92,28 @@ public class QueryingAPI extends AppCompatActivity {
 
                     if (isPresent){
                         list.add(dataSnapshot.getKey().toString());
+                        title.add(dataSnapshot.child("descr").getValue().toString());
                     }
 
                 }
                 adapter.notifyDataSetChanged();
             }
 
+
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+                Toast.makeText(QueryingAPI.this, title.get(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }
