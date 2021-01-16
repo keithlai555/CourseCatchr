@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "486118524450",
+    "project_id": "coursecatchr",
+    "storage_bucket": "coursecatchr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486118524450:android:65ad26be8faf66af402c7b",
+        "android_client_info": {
+          "package_name": "com.example.coursecatchr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486118524450-6gengc32s4hi7pecva3brvqs60ur4d1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkqphrPcjR-IFB8R421gspUaVCkEotZ-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486118524450-6gengc32s4hi7pecva3brvqs60ur4d1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
