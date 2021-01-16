@@ -45,8 +45,9 @@ public class QueryingAPI extends AppCompatActivity {
                     String stringCourses = dataSnapshot.child("prereq").getValue().toString();
                     String[] splitStrings = stringCourses.split(",");
 
-                    if (dataSnapshot.child("prereq").getValue().toString() == userCourses[count]){
-                    list.add(dataSnapshot.getKey().toString());
+                  //  if (dataSnapshot.child("prereq").getValue().toString() == userCourses[count]) {
+                 //       list.add(dataSnapshot.getKey().toString());
+                  //  }
                 }
                 adapter.notifyDataSetChanged();
             }

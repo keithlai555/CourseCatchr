@@ -25,10 +25,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.ml.vision.FirebaseVision;
-import com.google.firebase.ml.vision.common.FirebaseVisionImage;
-import com.google.firebase.ml.vision.text.FirebaseVisionText;
-import com.google.firebase.ml.vision.text.FirebaseVisionTextDetector;
+import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.text.Text;
+import com.google.mlkit.vision.text.TextRecognition;
+import com.google.mlkit.vision.text.TextRecognizer;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
 
@@ -135,11 +135,11 @@ public class ImageUpload extends AppCompatActivity implements PickiTCallbacks, V
     }
 
     private void runTextRecognition() {
-        FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(myBitmap);
-        FirebaseVisionTextDetector detector = FirebaseVision.getInstance().getVisionTextDetector();
-        detector.detectInImage(image).addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
+        InputImage image = InputImage.fromBitmap(myBitmap, 0);
+        TextRecognizer recognizer = TextRecognition.getClient();
+        recognizer.process(image).addOnSuccessListener(new OnSuccessListener<Text>() {
             @Override
-            public void onSuccess(FirebaseVisionText texts) {
+            public void onSuccess(Text texts) {
                 processExtractedText(texts);
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -244,13 +244,13 @@ public class ImageUpload extends AppCompatActivity implements PickiTCallbacks, V
         }
     }
 
-    private void processExtractedText(FirebaseVisionText firebaseVisionText) {
+    private void processExtractedText(Text firebaseVisionText) {
         myEditView.setText(null);
-        if (firebaseVisionText.getBlocks().size() == 0) {
+        if (firebaseVisionText.getTextBlocks().size() == 0) {
             myEditView.setText(R.string.no_text);
             return;
         }
-        for (FirebaseVisionText.Block block : firebaseVisionText.getBlocks()) {
+        for (Text.TextBlock block : firebaseVisionText.getTextBlocks()) {
             String[] block2 = (block.getText()).split("\\r?\\n");
             for (int i = 0; i < block2.length; i++) {
                 processLine(block2[i]);

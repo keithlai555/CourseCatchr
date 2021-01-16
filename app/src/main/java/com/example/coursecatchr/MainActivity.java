@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent activity2Intent = new Intent(getApplicationContext(), QueryingAPI.class);
+        Intent activity2Intent = new Intent(getApplicationContext(), ImageUpload.class);
         startActivity(activity2Intent);
     }
 
