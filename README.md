@@ -7,7 +7,8 @@ Introducing, CourseCatchr, the app that filters out your unwanted courses for yo
 
 
 Some References:
-These are the tutorials and githubs that were used most extensively throughout the project.
+
+These are the tutorials and GitHubs that were used most extensively throughout the project.
 
 https://medium.com/@abeythilakeudara3/firebase-text-recognition-with-android-e46814c49dfe
 http://ugradcalendar.uwaterloo.ca/page/ENG-BASc-and-BSE-Complementary-Studies-Engineering
