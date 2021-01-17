@@ -1,10 +1,12 @@
 package com.example.coursecatchr;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.util.LogPrinter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -49,13 +51,27 @@ public class QueryingAPI extends AppCompatActivity {
             termAlphabet = "B";
         }
 
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
+
+        actionBar.setTitle("Eligible Courses");
+
         final String currentTerm = termNumber + termAlphabet;
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         listView = (ListView)findViewById(R.id.simpleListView);
-        final ArrayList<String> list = new ArrayList<>();
-        final ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+
+        final ArrayList<String> listA = new ArrayList<>();
+        final ArrayList<String> listB = new ArrayList<>();
+        final ArrayList<String> listC = new ArrayList<>();
+
+
+        final ArrayList<String> listMain = new ArrayList<>();
+
+        final ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listMain);
         listView.setAdapter(adapter);
+
+
         final ArrayList<String> title = new ArrayList<>();
 
         mDatabase.child("Courses").addValueEventListener(new ValueEventListener() {
@@ -91,12 +107,35 @@ public class QueryingAPI extends AppCompatActivity {
                     }
 
                     if (isPresent){
-                        list.add(dataSnapshot.getKey().toString());
-                        title.add(dataSnapshot.child("descr").getValue().toString());
+
+                        if (dataSnapshot.child("list").getValue().toString().equals("A")){
+                            listA.add(dataSnapshot.getKey().toString());
+
+                        }else if (dataSnapshot.child("list").getValue().toString().equals("B") ){
+                            listB.add(dataSnapshot.getKey().toString());
+                        }else{
+                            listC.add(dataSnapshot.getKey().toString());
+                        }
+
+//                        title.add(dataSnapshot.child("descr").getValue().toString());
                     }
 
                 }
+
+                listMain.add("                                            LIST A");
+                for (int countA = 0; countA < listA.size(); countA++){
+                    listMain.add(listA.get(countA));
+                }
+                listMain.add("                                            LIST B");
+                for (int countB = 0; countB < listB.size(); countB++){
+                    listMain.add(listB.get(countB));
+                }
+                listMain.add("                                            LIST C");
+                for (int countC = 0; countC < listC.size(); countC++){
+                    listMain.add(listC.get(countC));
+                }
                 adapter.notifyDataSetChanged();
+
             }
 
 
@@ -114,6 +153,11 @@ public class QueryingAPI extends AppCompatActivity {
                 Toast.makeText(QueryingAPI.this, title.get(position), Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+
+
 
     }
 }
