@@ -1,5 +1,6 @@
 # CourseCatchr
 Choose your courses without the catch!
+
 As university students, figuring out degree requirements and eligible elective courses is a huge hassle.  
 Why scroll through an entire database of courses, when you can create a list of useful courses with just the click of a button! 
 Introducing, CourseCatchr, the app that filters out your unwanted courses for you!
