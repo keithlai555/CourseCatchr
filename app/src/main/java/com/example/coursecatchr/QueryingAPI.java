@@ -164,6 +164,7 @@ public class QueryingAPI extends AppCompatActivity implements View.OnClickListen
                     favourites.add(false);
                 }
                 adapter.notifyDataSetChanged();
+
             }
 
 
@@ -267,6 +268,11 @@ public class QueryingAPI extends AppCompatActivity implements View.OnClickListen
                 dialog.show();
             }
         });
+
+
+
+
+
 
     }
 }
