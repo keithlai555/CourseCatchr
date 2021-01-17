@@ -6,9 +6,7 @@ Why scroll through an entire database of courses, when you can create a list of 
 Introducing, CourseCatchr, the app that filters out your unwanted courses for you!
 
 
-Some References:
-
-These are the tutorials and GitHubs that were used most extensively throughout the project.
+Some References: These are the tutorials and GitHubs that were used most extensively throughout the project.
 
 https://medium.com/@abeythilakeudara3/firebase-text-recognition-with-android-e46814c49dfe
 http://ugradcalendar.uwaterloo.ca/page/ENG-BASc-and-BSE-Complementary-Studies-Engineering
