@@ -171,6 +171,7 @@ public class ImageUpload extends AppCompatActivity implements PickiTCallbacks, V
             @Override
             public void onSuccess(Text texts) {
                 processExtractedText(texts);
+                Toast.makeText(ImageUpload.this, "Modify your courses below the image.", Toast.LENGTH_LONG).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
