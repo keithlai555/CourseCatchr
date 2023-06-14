@@ -5,6 +5,9 @@ As university students, figuring out degree requirements and eligible elective c
 Why scroll through an entire database of courses, when you can create a list of useful courses with just the click of a button! 
 Introducing, CourseCatchr, the app that filters out your unwanted courses for you!
 
+Real-time database was created using Firebase to retrieve elective courses provided by UWaterloo. 
+
+This is a Hack the North project.
 
 Some References: These are the tutorials and GitHubs that were used most extensively throughout the project.
 
