@@ -119,7 +119,7 @@ public class QueryingAPI extends AppCompatActivity implements View.OnClickListen
                         isPresent = true;
                     }else {
                         isPresent = false;
-                    }
+                    }   
 
                     if (isPresent){
 
@@ -129,6 +129,9 @@ public class QueryingAPI extends AppCompatActivity implements View.OnClickListen
 
                         }else if (dataSnapshot.child("list").getValue().toString().equals("B") ){
                             listB.add(dataSnapshot.getKey().toString() + " - " + dataSnapshot.child("descr").getValue().toString());
+                            descriptionB.add(dataSnapshot.child("details").getValue().toString()); 
+                        }else if (dataSnapshot.child("list").getValue().toString().equals("D") ){
+                            listD.add(dataSnapshot.getKey().toString() + " - " + dataSnapshot.child("descr").getValue().toString());
                             descriptionB.add(dataSnapshot.child("details").getValue().toString());
                         }else{
                             listC.add(dataSnapshot.getKey().toString() + " - " + dataSnapshot.child("descr").getValue().toString());
